@@ -346,7 +346,7 @@ class HiveDialect(default.DefaultDialect):
         # Filter out empty rows and comment
         rows = [row for row in rows if row[0] and row[0] != '# col_name']
         for i, (col_name, _col_type, _comment) in enumerate(rows):
-            if col_name == '# Partition Information':
+            if col_name in ('# Partition Information', '# Partitioning'):
                 break
         # Handle partition columns
         col_names = []
